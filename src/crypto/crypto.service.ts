@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { AbstractExchange } from './exchanges/abstract.exchange';
-import { BinanceExchange } from './exchanges/binanceExchange';
+import { BinanceExchange } from './exchanges/binance.exchange';
 import { EstimateDto } from './dto/estimate.dto';
 import { ExchangeSymbol } from './utils/exchangeSymbol.util';
-import { KucoinExchange } from './exchanges/kucoinExchange';
+import { KucoinExchange } from './exchanges/kucoin.exchange';
 import { GetRatesDto } from './dto/getRates.dto';
 import { ConfigService } from '@nestjs/config';
 

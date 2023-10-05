@@ -49,19 +49,24 @@ export class CryptoService {
   }
 
   private async getExchangesRates(exchangeSymbol: ExchangeSymbol) {
-    const exchangesRates: { exchangeName: string; rate: number }[] = [];
+    try {
+      const exchangesRates: { exchangeName: string; rate: number }[] = [];
 
-    await Promise.all(
-      Object.keys(this.exchanges).map(async (exchangeName) => {
-        const result =
-          await this.exchanges[exchangeName].getPairRate(exchangeSymbol);
-        exchangesRates.push({
-          exchangeName,
-          rate: exchangeSymbol.reversed ? 1 / result : result,
-        });
-      }),
-    );
+      await Promise.all(
+        Object.keys(this.exchanges).map(async (exchangeName) => {
+          const result =
+            await this.exchanges[exchangeName].getPairRate(exchangeSymbol);
+          exchangesRates.push({
+            exchangeName,
+            rate: exchangeSymbol.reversed ? 1 / result : result,
+          });
+        }),
+      );
 
-    return exchangesRates;
+      return exchangesRates;
+    } catch (e) {
+      // TODO: log error
+      throw new Error('Something went wrong when fetching API.');
+    }
   }
 }

@@ -1,9 +1,10 @@
 import { IsIn } from 'class-validator';
+import { currencies } from '../constants';
 
 export class GetRatesDto {
-  @IsIn(['ETH', 'BTC', 'USDT'])
+  @IsIn(currencies)
   baseCurrency: string;
 
-  @IsIn(['ETH', 'BTC', 'USDT'])
+  @IsIn(currencies)
   quoteCurrency: string;
 }

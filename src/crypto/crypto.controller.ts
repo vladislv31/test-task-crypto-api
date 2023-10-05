@@ -9,6 +9,8 @@ import { EstimateDto } from './dto/estimate.dto';
 import { CryptoService } from './crypto.service';
 import { GetRatesDto } from './dto/getRates.dto';
 
+// TODO: create custom exception and handle it in exceptions filter
+
 @Controller()
 export class CryptoController {
   constructor(private readonly cryptoSerivce: CryptoService) {}

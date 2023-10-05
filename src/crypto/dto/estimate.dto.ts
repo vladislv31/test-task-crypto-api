@@ -1,14 +1,15 @@
 import { IsIn, IsInt } from 'class-validator';
 import { Transform } from 'class-transformer';
+import { currencies } from '../constants';
 
 export class EstimateDto {
   @IsInt()
   @Transform(({ value }) => parseInt(value, 10))
   inputAmount: number;
 
-  @IsIn(['ETH', 'BTC', 'USDT'])
+  @IsIn(currencies)
   inputCurrency: string;
 
-  @IsIn(['ETH', 'BTC', 'USDT'])
+  @IsIn(currencies)
   outputCurrency: string;
 }
